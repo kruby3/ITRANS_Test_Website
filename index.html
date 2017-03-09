@@ -14,19 +14,28 @@
     <script type="text/javascript"
   src="https://public.tableau.com/javascripts/api/tableau-2.js"></script>
 <script type="text/javascript">
+    var viz;
     function initViz() {
         var containerDiv = document.getElementById("vizContainer"),
             url = "https://10az.online.tableau.com/t/vipreportingtools/views/FilterTest/Headways",
             options = {
-                hideTabs: true,
-                onFirstInteractive: function () {
-                    console.log("Run this code when the viz has finished loading.");
-                }
+                    "Start Time": "",
+                    "End Time": "",
+                    hideTabs: true
             };
 
         var viz = new tableau.Viz(containerDiv, url, options);
         // Create a viz object and embed it in the container div.
     }
+
+    function s_timeFilter(year) {
+            var sheet = viz.getWorkbook().getActiveSheet();
+            if (s_time === "") {
+                sheet.clearFilterAsync("Start Time");
+            } else {
+                sheet.applyFilterAsync("Start Time", s_time, tableau.FilterUpdateType.REPLACE);
+            }
+        }
 </script>
 
     <!-- Bootstrap core CSS -->
@@ -87,6 +96,14 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Dashboard</h1>
+          <div id="vizContainer"></div>
+          <div id="controls" style="padding:20px;">
+            s_time: <select id="changeS_time" onchange="s_timeFilter(value);">
+              <option value="1/11/2017 14:00:00">2:00</option>
+              <option value="1/11/2017 15:00:00 PM">3:00</option>
+              <option value="1/11/2017 16:00:00 PM">4:00</option>
+        </select>
+    </div>
           <div id="vizContainer"></div>
         </div>
       </div>
