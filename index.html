@@ -11,23 +11,6 @@
 
     <title>NextBuzz Reporting</title>
 
-    <script type="text/javascript"
-  src="https://public.tableau.com/javascripts/api/tableau-2.js"></script>
-<script type="text/javascript">
-    function initViz() {
-        var containerDiv = document.getElementById("vizContainer"),
-            url = "https://10az.online.tableau.com/t/vipreportingtools/views/FilterTest/Headways",
-            options = {
-                hideTabs: true,
-                onFirstInteractive: function () {
-                    console.log("Run this code when the viz has finished loading.");
-                }
-            };
-
-        var viz = new tableau.Viz(containerDiv, url, options);
-        // Create a viz object and embed it in the container div.
-    }
-</script>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -87,7 +70,7 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Dashboard</h1>
-          <div id="vizContainer"></div>
+          <script type='text/javascript' src='https://us-east-1.online.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 1522px; height: 677px;'><object class='tableauViz' width='1200' height='677' style='display:none;'><param name='host_url' value='https%3A%2F%2Fus-east-1.online.tableau.com%2F' /> <param name='site_root' value='&#47;t&#47;itrans' /><param name='name' value='NewReport&#47;ArrivalHeadwayBoxplotbyStation' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showShareOptions' value='true' /></object></div>
         </div>
       </div>
     </div>
